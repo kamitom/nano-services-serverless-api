@@ -1,0 +1,19 @@
+service: http-handler
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+
+functions:
+  upload:
+    handler: handler.upload
+    role: arn:aws:iam::357355959826:role/lambda-http-handler
+
+    events:
+      - http:
+          path: images
+          method: post
+          
