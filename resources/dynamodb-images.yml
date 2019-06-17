@@ -1,0 +1,18 @@
+ Resources:
+   tomimagestestTable:
+     Type: AWS::DynamoDB::Table
+     Properties:
+       TableName: tom-images-test
+       AttributeDefinitions:
+         - AttributeName: id
+           AttributeType: S
+         - AttributeName: bucket
+           AttributeType: S
+       KeySchema:
+         - AttributeName: id
+           KeyType: HASH
+         - AttributeName: bucket
+           KeyType: RANGE
+       ProvisionedThroughput:
+         ReadCapacityUnits: 1
+         WriteCapacityUnits: 1

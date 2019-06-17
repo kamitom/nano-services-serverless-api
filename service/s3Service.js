@@ -1,13 +1,13 @@
 const AWS = require('aws-sdk');
 const uuid = require('uuid/v4');
 
-AWS.config.update({
-    region: 'us-east-1'
-});
+// AWS.config.update({
+//     region: 'us-east-1'
+// });
 
 const s3 = new AWS.S3();
 
-const BUCKET = 'nano-services-imagens';
+const BUCKET = 'tom-photos';
 
 const upload = body => {
     const id = uuid();

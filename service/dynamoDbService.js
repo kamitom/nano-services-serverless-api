@@ -1,12 +1,12 @@
 const AWS = require('aws-sdk');
 
-AWS.config.update({
-    region: 'us-east-1'
-});
+// AWS.config.update({
+//     region: 'us-east-1'
+// });
 
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
 
-const TABLE = 'imagens';
+const TABLE = 'tom-images-test';
 
 const put = item => {
     return new Promise((resolve, reject) => {

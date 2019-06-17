@@ -1,5 +1,5 @@
 {
-  "name": "http-handler",
+  "name": "tom-http-s3-handler",
   "version": "1.0.0",
   "description": "",
   "main": "handler.js",
@@ -13,5 +13,8 @@
     "aws-sdk": "^2.404.0",
     "serverless": "^1.37.1",
     "serverless-offline": "^4.4.2"
+  },
+  "dependencies": {
+    "serverless-pseudo-parameters": "^2.4.0"
   }
 }
