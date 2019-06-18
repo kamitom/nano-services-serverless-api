@@ -8,7 +8,7 @@ const dynamoDb = new AWS.DynamoDB.DocumentClient();
 
 const TABLE = 'tom-images-test';
 
-const put = item => {
+const put = (item) => {
     return new Promise((resolve, reject) => {
         dynamoDb.put({
             TableName: TABLE,
@@ -17,12 +17,14 @@ const put = item => {
                 bucket: item.bucket,
             }
         }, (err, data) => {
-            if(err) 
+            if (err)
                 return reject(err);
-            
+
             return resolve(data);
         })
     });
 };
 
-module.exports = { put };
+module.exports = {
+    put
+};
