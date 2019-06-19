@@ -5,6 +5,8 @@ const uuidv4 = require('uuid/v4');
 const s3Service = require('./service/s3Service');
 const dynamoDbService = require("./service/dynamoDbService");
 
+
+
 module.exports.upload = async (event, _ctx) => {
   console.log("async event: " + uuidv4(), JSON.stringify(event, null, 2));
   console.log("context info2: ", _ctx);

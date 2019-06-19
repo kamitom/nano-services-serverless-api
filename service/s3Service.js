@@ -27,18 +27,18 @@ const upload = (body) => {
     console.log("upload body: ", JSON.stringify(body));
     const id = uuidv4();
 
-    const base64d2 = base64_encode(body);
-    console.log("base64d2 look: ", base64d2);
+    const base64d2_realUpload = base64_encode(body);
+    console.log("base64d2_realUpload look: ", base64d2_realUpload);
 
-    const base64d = base64png.base64usflag;
+    const base64flag = base64png.base64britishRound;
 
-    console.log("base64 look: ", base64d);
+    console.log("base64flag look: ", base64flag);
 
     return new Promise((resolve, reject) => {
 
         // Ensure that you POST a base64 data to your server.
         // Let's assume the variable "base64" is one.
-        const base64Data = new Buffer(base64d.replace(/^data:image\/\w+;base64,/, ""), 'base64')
+        const base64Data = new Buffer(base64flag.replace(/^data:image\/\w+;base64,/, ""), 'base64')
         // Getting the file type, ie: jpeg, png or gif
         // const type = base64d.split(';')[0].split('/')[1];
 
@@ -63,9 +63,8 @@ const upload = (body) => {
         s3.upload(params2, (err, data) => {
             if (err) {
                 console.log("err: ", err);
-                return reject(err)
+                return reject(err);
             }
-
             console.log('Image successfully uploaded.');
             return resolve({
                 bucket: BUCKET,
@@ -74,6 +73,27 @@ const upload = (body) => {
             // Continue if no error
             // Save data.Location in your database
         });
+
+        // upload txt file demo:
+        // s3.putObject({
+        //     Bucket: BUCKET,
+        //     Key: id + '.csv',
+        //     //  Body: new Buffer(body.replace(/^data:image\/w+;base64,/, ""), 'base64'),
+        //     Body: new Buffer(body, 'binary'),
+        //     ContentEncoding: 'binary',
+        //     ContentType: 'text/csv',
+        //     //  ContentEncoding: 'base64',
+        //     //  ContentType: 'image/jpeg',
+        // }, (err, data) => {
+        //     if (err) {
+        //         return reject(err)
+        //     }
+        //     console.log('text/csv file successfully uploaded.');
+        //     return resolve({
+        //         bucket: BUCKET,
+        //         key: id
+        //     });
+        // });
 
     });
 

@@ -41,12 +41,16 @@ provider:
 functions:
   uploadFunc:
     handler: handler.upload
-    # role: arn:aws:iam::461716780826:role/ts-api-test-tom-dev2-ap-northeast-1-lambdaRole
-
     events:
       - http:
           path: images/
           method: post
+  # uploadS3Func:
+  #   handler: service/file-upload-route.router
+  #   events:
+  #     - http:
+  #         path: image-upload/
+  #         method: post
 
 resources:
   # DynamoDB
